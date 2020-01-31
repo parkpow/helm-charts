@@ -5,7 +5,8 @@ Instructions to install the Plate Recognizer SDK on your Kubernetes cluster.
 1. Get helm from https://github.com/helm/helm/releases
 1. Setup your Kubernetes cluster. For example, https://kubernetes.io/docs/tasks/tools/install-minikube/
 	- If using Minikube, make sure to enable the following addons `dashboard ingress helm-tiler`
-1. Install the chart`helm install platerec-sdk platerec-helm/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
+1. Clone this repository `git clone https://github.com/parkpow/helm-charts.git` and `cd helm-charts`
+1. Install the chart `helm install platerec-sdk platerec-helm/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
 
 ### Configuration
 
