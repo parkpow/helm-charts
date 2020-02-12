@@ -6,7 +6,6 @@ metadata:
     {{- include "platerec-helm.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
-  externalTrafficPolicy: {{ .Values.service.externalTrafficPolicy | quote }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: http
