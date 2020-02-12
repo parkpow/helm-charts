@@ -2,6 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: {{ include "platerec-helm.fullname" . }}
+  namespace: {{ $.Release.Namespace }}
   labels:
     {{- include "platerec-helm.labels" . | nindent 4 }}
   annotations:

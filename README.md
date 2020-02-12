@@ -13,6 +13,7 @@ Instructions to install the Plate Recognizer SDK on your Kubernetes cluster.
 - To **upgrade** the chart, do `helm upgrade platerec-sdk platerec-helm/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
 - To **delete** the deployment, do `helm delete platerec-sdk`
 - To use the **gpu version** instead of the cpu version, do `helm install platerec-sdk platerec-helm/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY> --set image.repository=platerecognizer/alpr-gpu` 
+- To **deploy** to a different namespace other than `default`, include the `--namespace <namespace-name>` to the install/upgrade command as so  `helm install platerec-sdk platerec-helm/ --namespace <namespace-name> --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
 
 ### Minikube Notes
 
