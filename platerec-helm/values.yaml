@@ -35,13 +35,17 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 8080
-  externalTrafficPolicy: Cluster
   nodePorts:
     http: ""
     https: ""
     metrics: ""
+  externalTrafficPolicy: Cluster
+  annotations: {}
+  loadBalancerSourceRanges: []
+
+
 
 ingress:
   enabled: false
