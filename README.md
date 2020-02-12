@@ -15,11 +15,14 @@ Instructions to install the Plate Recognizer SDK on your Kubernetes cluster.
 - To use the **gpu version** instead of the cpu version, do `helm install platerec-sdk platerec-helm/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY> --set image.repository=platerecognizer/alpr-gpu` 
 - To **deploy** to a different namespace other than `default`, include `--namespace <namespace-name>` to the install/upgrade command as so  `helm install platerec-sdk platerec-helm/ --namespace <namespace-name> --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
 
-here are a few configurations variables that can be changed (by adding them to the install command using `--set` parameter)
+---
+
+**Configurations variables** that can be changed (by adding them to the install command using `--set` parameter)
+
 | Parameter | Description | Default  | Options |
 |-----------|-------------|----------|---------|
-| `TOKEN`   |  PlateRecognizer Token (required)            | `nil`          |    |
-| `LICENSE_KEY`   |  PlateRecognizer SDK License (required)            | `nil`          |    |
+| `TOKEN`   |  PlateRecognizer Token (**required**)            | `nil`          |    |
+| `LICENSE_KEY`   |  PlateRecognizer SDK License (**required**)            | `nil`          |    |
 | `replicaCount`   |  Number of Pods to run            | `1`          |   |
 | `image.repository`   | Plate Recognizer sdk             | `platerecognizer/alpr`          | [`platerecognizer/alpr`, `platerecognizer/alpr-gpu`]  |
 | `image.pullPolicy`   |   Image pull policy   | `Always`          | [`Always`, `IfNotPresent`] |
