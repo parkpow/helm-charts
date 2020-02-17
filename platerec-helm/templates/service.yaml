@@ -26,5 +26,14 @@ spec:
       {{- else if eq .Values.service.type "ClusterIP" }}
       nodePort: null
       {{- end }}
+    - port: 8081
+      targetPort: http-live
+      protocol: TCP
+      name: http-live
+      {{- if (and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePorts.http)))}}
+      nodePort: {{ .Values.service.nodePorts.http }}
+      {{- else if eq .Values.service.type "ClusterIP" }}
+      nodePort: null
+      {{- end }}  
   selector:
     {{- include "platerec-helm.selectorLabels" . | nindent 4 }}
