@@ -1,4 +1,4 @@
-apiVersion: v2
+apiVersion: v1
 name: platerec-helm
 description: Accurate, Fast, Developer-Friendly ANPR
 
