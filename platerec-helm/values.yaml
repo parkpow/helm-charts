@@ -45,7 +45,11 @@ service:
   annotations: {}
   loadBalancerSourceRanges: []
 
-
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 0
 
 ingress:
   enabled: false
