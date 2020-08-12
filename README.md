@@ -2,6 +2,7 @@
 
 Instructions to install the Plate Recognizer SDK on your Kubernetes cluster.
 
+1. [Contact support](https://platerecognizer.com/contact/) to **enable Kubernetes** for your account.
 1. Get helm from https://github.com/helm/helm/releases
 1. Setup your Kubernetes cluster. For example, https://kubernetes.io/docs/tasks/tools/install-minikube/
 	- If using Minikube, make sure to enable the following addons `dashboard ingress helm-tiler`
