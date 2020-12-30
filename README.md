@@ -22,6 +22,7 @@ Sign up for a [**Free Trial**](https://app.platerecognizer.com/accounts/signup/?
 
 [Insert Image: https://www.dropbox.com/s/q5u33gsia368tnz/Plate-Recognizer-ALPR-ANPR-Github-Kubernetes.jpg?dl=0]
 
+
 ## Installation
 
 Instructions to install the Plate Recognizer SDK on your Kubernetes cluster.
