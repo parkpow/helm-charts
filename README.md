@@ -20,6 +20,7 @@ Our [license plate recognition (LPR)](https://platerecognizer.com/snapshot/?utm_
 
 Sign up for a [**Free Trial**](https://app.platerecognizer.com/accounts/signup/?utm_source=github&amp;utm_medium=website) now (no credit card required) or **learn more** at [https://platerecognizer.com](https://platerecognizer.com/).
 
+![Plate-Recognizer-ALPR-ANPR-Github-Kubernetes](https://user-images.githubusercontent.com/61606720/103374983-c0c65680-4a8d-11eb-99ac-8e0867d3b77f.jpg)
 
 
 ## Installation
