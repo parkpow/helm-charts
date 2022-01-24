@@ -60,14 +60,14 @@ spec:
               protocol: TCP  
           livenessProbe:
             httpGet:
-              path: /liveliness/
-              port: http-live
+              path: /
+              port: http
             initialDelaySeconds: 15
             timeoutSeconds: 60
           readinessProbe:
             httpGet:
-              path: /readiness/
-              port: http-live
+              path: /
+              port: http
             initialDelaySeconds: 15
             timeoutSeconds: 60
           volumeMounts:
