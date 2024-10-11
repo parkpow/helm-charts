@@ -65,11 +65,6 @@ Instructions to install the Plate Recognizer SDK on your Kubernetes cluster.
 | `persistence.accessMode`                  | PVC Access Mode                                                                                        | `ReadWriteOnce`                                              | [`ReadWriteMany`, `ReadWriteOnce` ]
 | `persistence.size`                        | PVC Storage Request                                                                                    | `10Gi`                                                       |
 
-
-
-
-
-
 ### Minikube Notes
 
 To access the instance when using a custom cluster in Minikube, run the following command:

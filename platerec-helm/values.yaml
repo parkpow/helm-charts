@@ -10,7 +10,7 @@ replicaCount: 1
 
 image:
   repository: platerecognizer/alpr
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 imagePullSecrets: []
 nameOverride: ""
@@ -94,7 +94,7 @@ persistence:
   ## If you want to reuse an existing claim, you can pass the name of the PVC using
   ## the existingClaim variable
   # existingClaim: your-claim
-  enabled: true
+  enabled: false
   accessMode: ReadWriteOnce
   size: 1Gi
   name: license
