@@ -6,11 +6,13 @@
 TOKEN:
 LICENSE_KEY:
 
+fileUpload: false
+
 replicaCount: 1
 
 image:
-  repository: platerecognizer/alpr
-  pullPolicy: IfNotPresent
+  repository: platerecognizer/alpr-stream
+  pullPolicy: Always
 
 imagePullSecrets: []
 nameOverride: ""
@@ -36,7 +38,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 80
   nodePorts:
     http: ""
     https: ""
@@ -94,7 +96,6 @@ persistence:
   ## If you want to reuse an existing claim, you can pass the name of the PVC using
   ## the existingClaim variable
   # existingClaim: your-claim
-  enabled: true
   accessMode: ReadWriteOnce
-  size: 1Gi
-  name: license
+  size: 10Gi
+  name: user-data

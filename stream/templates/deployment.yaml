@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "platerec-stream.fullname" . }}
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    {{- include "platerec-stream.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "platerec-stream.selectorLabels" . | nindent 6 }}
+  {{- if .Values.updateStrategy }}
+  strategy: {{ toYaml .Values.updateStrategy | nindent 4 }}
+  {{- end }}
+  template:
+    metadata:
+      labels:
+        {{- include "platerec-stream.selectorLabels" . | nindent 8 }}
+    spec:
+    {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+      serviceAccountName: {{ include "platerec-stream.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: user-data
+          persistentVolumeClaim:
+            claimName: {{ .Values.persistence.existingClaim | default (include "platerec-stream.pvc.claimname" .) }}  
+        - name: stream-config
+          configMap:
+            name: stream-config
+            items:
+              - key: config.ini
+                path: config.ini
+
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: "TOKEN"
+              valueFrom:
+                secretKeyRef:
+                  key: TOKEN
+                  name: {{ include "platerec-stream.fullname" . }}-auth
+            - name: "LICENSE_KEY"
+              valueFrom:
+                secretKeyRef:
+                  key: LICENSE_KEY
+                  name: {{ include "platerec-stream.fullname" . }}-auth      
+                 
+          ports:
+            {{- if .Values.fileUpload }}
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+            {{- end }}
+            - name: http-live
+              containerPort: 8001
+              protocol: TCP  
+          livenessProbe:
+            httpGet:
+              path: /status/
+              port: http-live
+            initialDelaySeconds: 30
+            timeoutSeconds: 10
+          
+          volumeMounts:
+            - name: stream-config
+              mountPath: /user-data/config.ini
+              subPath: config.ini
+            - mountPath: /user-data
+              name: user-data
+ 
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+
+      {{- with .Values.nodeSelector }}      
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}

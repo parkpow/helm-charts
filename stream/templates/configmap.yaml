@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: stream-config
+data:
+  config.ini: |
+    # Instructions: https://app.platerecognizer.com/stream-docs
+    timezone = UTC
+    [cameras]
+    [[camera-1]]
+    active = yes  
+    url = file-upload
+    # url = rtsp://platerec:8S5AZ7YasGc3m4@video.platerecognizer.com:8554/demo    
+    # webhook_targets = parkpow
+    
+    [webhooks]
+    caching = yes
+    [[parkpow]]
+    url = https://app.parkpow.com/api/v1/webhook-receiver/
+    image = yes
+    header = Authorization: Token my-unique-token
+    image_type = vehicle
+    request_timeout = 20
+    caching = no
