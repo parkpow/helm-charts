@@ -4,7 +4,7 @@ Get high-accuracy, developer-friendly **automatic license plate recognition** ([
 Our machine-learning software:
 
 - Works on **dark, low-res, blurry images** and tough angles, all vehicle types, etc.  See our full [ALPR results](https://platerecognizer.com/alpr-results/?utm_source=github&amp;utm_medium=website).
-- Also Works on Video URLs such are RTSP or Video Files
+- Works on Video URLs such are RTSP or Video Files
 - Decodes **license plate** , vehicle type (e.g. SUV, van, pickup truck), [**vehicle make model**](https://platerecognizer.com/vehicle-make-model-recognition-with-color/?utm_source=github&amp;utm_medium=website) (e.g. Honda Accord), color, and orientation. Ignores bumper stickers, car signs, etc.
 - Is optimized for all [50 USA States](https://platerecognizer.com/alpr-for-usa/?utm_source=github&amp;utm_medium=website), [India](https://platerecognizer.com/anpr-for-india?utm_source=github&amp;utm_medium=website), [Brazil](https://platerecognizer.com/anpr-for-brazil/?utm_source=github&amp;utm_medium=website) and [**90+ countries worldwide**](https://platerecognizer.com/countries/?utm_source=github&amp;utm_medium=website).
 
@@ -17,14 +17,14 @@ Get license plate reader deployed on Kubernetes using Helm Charts in under 60 mi
 
 ALPR, ANPR software on Kubernetes is ideal for parking, toll, police surveillance, community security, and other use cases.
 
-Our [license plate recognition (LPR)](https://platerecognizer.com/snapshot/?utm_source=github&amp;utm_medium=website) software can also forward results to our full **ALPR Dashboard** and [**Parking Management software**](https://parkpow.com/?utm_source=github&amp;utm_medium=website) solution, ParkPow.
+Our license plate recognition (LPR) software can also forward results to our full **ALPR Dashboard** and [**Parking Management software**](https://parkpow.com/?utm_source=github&amp;utm_medium=website) solution, ParkPow.
 
 Sign up for a [**Free Trial**](https://app.platerecognizer.com/accounts/signup/?utm_source=github&amp;utm_medium=website) now (no credit card required) or **learn more** at [https://platerecognizer.com](https://platerecognizer.com/).
 
 ![Plate-Recognizer-ALPR-ANPR-Github-Kubernetes](https://user-images.githubusercontent.com/61606720/103374983-c0c65680-4a8d-11eb-99ac-8e0867d3b77f.jpg)
 
 ## Installation
-Instructions to install Plate Recognizer Snapshot/Stream SDK on Kubernetes cluster. Requirements:
+Instructions to install Plate Recognizer [Snapshot](https://platerecognizer.com/snapshot/?utm_source=github&amp;utm_medium=website) or [Stream](https://platerecognizer.com/STREAM/?utm_source=github&amp;utm_medium=website) SDK on Kubernetes cluster. Requirements:
 1. Setup your Kubernetes cluster. For example, https://kubernetes.io/docs/tasks/tools/install-minikube/
 	- If using Minikube, make sure to enable the following addons `dashboard ingress helm-tiller`
 1. Get helm from https://github.com/helm/helm/releases
@@ -35,7 +35,7 @@ Instructions to install Plate Recognizer Snapshot/Stream SDK on Kubernetes clust
 1. Install chart `helm install platerec-snapshot snapshot/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
 
 
-### Configuration
+#### Configuration
 
 - To **upgrade** the chart, do `helm upgrade platerec-snapshot snapshot/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
 - To **delete** the deployment, do `helm delete platerec-snapshot`
@@ -65,15 +65,12 @@ Instructions to install Plate Recognizer Snapshot/Stream SDK on Kubernetes clust
 
 
 ### Stream SDK
-
 Install chart `helm install platerec-stream stream/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
 
-
-### Configuration
-- To **upgrade**(restart services) the chart, do `helm upgrade platerec-stream stream/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
-- Update Stream config by editing `configmap.yaml` then upgrading the chart. If using Stream file upload, set `fileUpload: true` in `stream/values.yaml`
+#### Configuration
+- Update Stream config by editing `configmap.yaml` then restart services for changes to take effect by upgrading the chart.
+- To **upgrade** the chart, do `helm upgrade platerec-stream stream/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
 - To **delete** the deployment, do `helm delete platerec-stream`
-- To use the **gpu version** instead of the cpu version, do `helm install platerec-stream stream/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY> --set image.repository=platerecognizer/alpr-stream-TODO` 
 - To **deploy** to a different namespace other than `default`, include `--namespace <namespace-name>` to the install/upgrade command as so  `helm install platerec-stream stream/ --namespace <namespace-name> --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
 
 ---
@@ -97,12 +94,12 @@ Install chart `helm install platerec-stream stream/ --set TOKEN=<MY_TOKEN> --set
 | `persistence.size`                        | PVC Storage Request                                                                                    | `10Gi`                                                       |
 
 > The service options only apply when `fileUpload=true`
-### Minikube Notes
 
+## Minikube Notes
 To access the instance when using a custom cluster in Minikube, run the following command:
 
 - Simulate a load balancer `minikube tunnel`
 - Then run the commands shown after the `helm install` command.
 - You can also use this command to get the extenal_id `kubectl get --namespace default svc -w platerec-sdk-test-platerec-helm`
 - Finally call the SDK endpoint with `curl -F 'upload=@/path/to/car.jpg' http://<external_ip>:8080/alpr`
-- Access minikube services `minikube service platerec-stream`
+- Another option of accessing minikube services `minikube service platerec-stream`
