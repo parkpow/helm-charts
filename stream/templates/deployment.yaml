@@ -6,7 +6,7 @@ metadata:
   labels:
     {{- include "platerec-stream.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
       {{- include "platerec-stream.selectorLabels" . | nindent 6 }}

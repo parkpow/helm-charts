@@ -1,4 +1,4 @@
-# Default values for platerec-helm.
+# Default values for platerec-snapshot.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -8,7 +8,6 @@ LICENSE_KEY:
 
 fileUpload: false
 
-replicaCount: 1
 
 image:
   repository: platerecognizer/alpr-stream
