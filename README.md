@@ -31,7 +31,7 @@ Instructions to install Plate Recognizer [Snapshot](https://platerecognizer.com/
 1. Clone this repository `git clone https://github.com/parkpow/helm-charts.git` and `cd helm-charts`
 
 ### Snapshot SDK
-1. [Contact support](https://platerecognizer.com/contact/) to **enable Kubernetes** for your account. # TODO if not enabled one needs a persistent volume
+1. [Contact support](https://platerecognizer.com/contact/) to **enable Kubernetes** for your account. License without Kubernetes enabled requires a persistent volume: `persistence.enabled=true`
 1. Install chart `helm install platerec-snapshot snapshot/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
 
 
@@ -57,7 +57,7 @@ Instructions to install Plate Recognizer [Snapshot](https://platerecognizer.com/
 | `service.annotations`                     | Service annotations                                                                                    | `{}`                                                         |
 | `service.type`                            | Kubernetes Service type                                                                                | `ClusterIP`                                               | [`LoadBalancer`, `ClusterIP`]
 | `service.port`                            | Service HTTP port                                                                                      | `8080`                                                         |
-| `persistence.enabled`                     | Enable persistence using PVC                                                                           | `False`                                                       |
+| `persistence.enabled`                     | Enable persistence using PVC                                                                           | `false`                                                       |
 | `persistence.existingClaim`               | Enable persistence using an existing PVC                                                               | `nil`                                                        |
 | `persistence.storageClass`                | PVC Storage Class                                                                                      | `nil` (uses alpha storage class annotation)                  |
 | `persistence.accessMode`                  | PVC Access Mode                                                                                        | `ReadWriteOnce`                                              | [`ReadWriteMany`, `ReadWriteOnce` ]
