@@ -68,7 +68,8 @@ Instructions to install Plate Recognizer [Snapshot](https://platerecognizer.com/
 Install chart `helm install platerec-stream stream/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
 
 #### Configuration
-- Update Stream config by editing `configmap.yaml` then restart services for changes to take effect by upgrading the chart.
+- Update Stream config by editing `configmap.yaml` then restart services for changes to take effect by upgrading the chart. 
+	> To use Stream configuration through Cloud, disable the configmap volume mount so configs get loaded from Cloud on container start.
 - To **upgrade** the chart, do `helm upgrade platerec-stream stream/ --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
 - To **delete** the deployment, do `helm delete platerec-stream`
 - To **deploy** to a different namespace other than `default`, include `--namespace <namespace-name>` to the install/upgrade command as so  `helm install platerec-stream stream/ --namespace <namespace-name> --set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>`
