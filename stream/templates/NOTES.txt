@@ -1,0 +1,13 @@
+Thank you for installing {{ .Chart.Name }}.  
+
+{{- if .Values.fileUpload -}}
+File Upload Service is Enabled.
+{{- else }}
+File Upload Service is Disabled. 
+{{- end }}
+
+Update Stream config by editing `configmap.yaml` and restart stream by upgrading helm:
+
+  $ helm upgrade ...
+
+If you disable file upload in the config, Also do the same in `Values.yaml` by setting `fileUpload: false`

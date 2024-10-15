@@ -96,5 +96,5 @@ persistence:
   # existingClaim: your-claim
   enabled: false
   accessMode: ReadWriteOnce
-  size: 10Gi
+  size: 1Gi
   name: license
