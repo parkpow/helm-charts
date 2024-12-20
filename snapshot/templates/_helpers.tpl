@@ -103,5 +103,5 @@ but Helm 2.9 and 2.10 does not support it, so we need to implement this if-else 
 {{- end -}}
 
 {{- define "platerec-snapshot.secretname" -}}
-{{- .Values.existingSecret | default (printf "%s-auth" (include "platerec-snapshot.fullname" .)) -}}
+{{- .Values.EXISTING_SECRET | default (printf "%s-auth" (include "platerec-snapshot.fullname" .)) -}}
 {{- end -}}

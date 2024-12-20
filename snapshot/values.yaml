@@ -2,12 +2,12 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-# PlateRecognizer token and license - alternatively you can use `existingSecret`
+# PlateRecognizer token and license - alternatively you can use `EXISTING_SECRET`
 TOKEN:
 LICENSE_KEY:
 
 # Alternatively you can provide TOKEN and LICENSE_KEY in an externally provided secret
-# existingSecret: your-secret
+# EXISTING_SECRET: your-secret
 
 replicaCount: 1
 
