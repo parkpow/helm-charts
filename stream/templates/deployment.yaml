@@ -47,12 +47,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: TOKEN
-                  name: {{ include "platerec-stream.fullname" . }}-auth
+                  name: {{ include "platerec-stream.secretname" . }}
             - name: "LICENSE_KEY"
               valueFrom:
                 secretKeyRef:
                   key: LICENSE_KEY
-                  name: {{ include "platerec-stream.fullname" . }}-auth      
+                  name: {{ include "platerec-stream.secretname" . }}
                  
           ports:
             {{- if .Values.fileUpload }}

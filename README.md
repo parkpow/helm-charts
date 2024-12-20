@@ -96,6 +96,27 @@ Install chart `helm install platerec-stream stream/ --set TOKEN=<MY_TOKEN> --set
 
 > The service options only apply when `fileUpload=true`
 
+## Use Existing Secret for LICENSE_KEY and TOKEN
+You can use and existing secret by specifying the name. Replace:
+```shell
+--set TOKEN=<MY_TOKEN> --set LICENSE_KEY=<LICENSE_KEY>
+```
+With:
+```shell
+--set EXISTING_SECRET=my-manually-created-secrets
+```
+
+Expected data in secret is **TOKEN** and **LICENSE_KEY**:
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-manually-created-secrets
+data:
+  TOKEN: Base64 encoded token
+  LICENSE_KEY: Base64 encoded license
+```
+
 ## Minikube Notes
 To access the instance when using a custom cluster in Minikube, run the following command:
 
